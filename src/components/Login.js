@@ -1,5 +1,6 @@
 
 import React from 'react';
+// eslint-disable-next-line
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from "axios";
@@ -7,7 +8,7 @@ import AppUser from './models/AppUser';
 
 const Login = () => {
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const [appUser, setAppUser] = useState(new AppUser());
     const [credentials, setCredentials] = useState('');
@@ -23,13 +24,16 @@ const Login = () => {
 
     const submitAppUser = (event) => {
 
-        axios.post(`http://localhost:8082/login`, appUser)
+        axios.post(`login`, appUser)
             .then((response) => {
                 console.log(response.data);
-                localStorage.setItem('appUser', appUser);
+                sessionStorage.setItem('isUserLoggedIn', true);             // isUserLoggedIn = true
                 alert("Success");
-                history.push('/home');
+                // localStorage.setItem('appUser', appUser);
+                window.location.assign('/home');
             }).catch((error) => {
+                sessionStorage.setItem('isUserLoggedIn', false);
+                sessionStorage.clear();
                 console.log(error.response);
                 setCredentials("Enter proper credentials.");
             });
@@ -46,6 +50,7 @@ const Login = () => {
                             className="form-control"
                             name="userName"
                             id="userName"
+                            // eslint-disable-next-line
                             className="form-control mb-3"
                             placeholder="Enter username"
                             value={appUser.userName}
@@ -57,6 +62,7 @@ const Login = () => {
                             className="form-control"
                             name="password"
                             id="password"
+                            // eslint-disable-next-line
                             className="form-control mb-3"
                             placeholder="Enter password"
                             value={appUser.password}

@@ -41,6 +41,7 @@ const EmpData = (props) => {
             .then((response) => {
                 dispatch(getEmpById(response.data));                       // Sending data to redux store
                 setEmp({ eid: '' });
+                // setEmp(response.data);
             })
             .catch(() => {
                 alert("Employee not found.");

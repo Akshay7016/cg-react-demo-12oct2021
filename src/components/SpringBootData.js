@@ -6,6 +6,8 @@ const SpringBootData = () => {
 
     const [emp, setEmp] = useState(new Employee());
     const [newEmpObj, setNewEmpObj] = useState(new Employee());
+
+    // eslint-disable-next-line
     const [displayEmpObj, setDisplayEmpObj] = useState(new Employee());
     const [empList, setEmpList] = useState([]);
 

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from "axios";
 import AppUser from './models/AppUser';
 
@@ -46,6 +46,7 @@ const Register = (props) => {
                             className="form-control"
                             name="userName"
                             id="userName"
+                            // eslint-disable-next-line
                             className="form-control mb-3"
                             placeholder="Enter username"
                             value={appUser.userName}
@@ -57,6 +58,7 @@ const Register = (props) => {
                             className="form-control"
                             name="password"
                             id="password"
+                            // eslint-disable-next-line
                             className="form-control mb-3"
                             placeholder="Enter password"
                             value={appUser.password}
